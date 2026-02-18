@@ -33,7 +33,7 @@ def pdf_splitter(pdfPath, outputFolder, ordnerName):
                 prefix = textlines[0].replace("Lohnabrechnung - ","Lohnabrechnung_").replace("/", "_")
                 vorname = re.search(r"##DIALPERSVORNAME##\s*([^\s,\.]+)", text)
                 nachname = re.search(r"##DIALPERSNACHNAME##\s*([^\s,\.]+)", text)
-                fullname = prefix + "_" + vorname.group(1) + "_" + nachname.group(1)
+                fullname = prefix + "_" + nachname.group(1) + "_" + vorname.group(1)
                 writer = PdfWriter()
                 writer.add_page(reader.pages[i])
                 output_path = os.path.join(outputFolder, f"{fullname}.pdf")
